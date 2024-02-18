@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Calculator </title>
+
+    <style>
+
+        body{
+            background-color: bisque;
+        }
+        .box{
+            display: flex;
+            justify-content: center;
+        }
+
+        .box1{
+            background-color: rgb(32, 32, 175, 0.745);
+            display: flex;
+            width: 400px;
+            height: 400px;
+            flex-direction: column;
+            justify-content: space-around; 
+            align-items: center; 
+            justify-content: center;
+        }
+
+        .box2{
+            
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            background-color: rgba(230, 230, 177, 0.831);
+            
+        }
+
+        #char{
+            font-size: xx-large;
+        }
+
+        .Ints{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+
+        #num1{
+            width: 30%;
+        }
+        
+        #num2{
+            width: 30%;
+        }
+
+        #Operator{
+            width: 20%;
+        }
+
+        button{
+            color: burlywood;
+            align-self: center;
+            width: 30%;
+        }
+
+        #result{
+            color: black;
+            align-self: center;
+            width: 60%;
+        }
+        .sums{
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+
+</head>
+<body>
+    
+    <div class="box">
+        <div class="box1">
+            <div class="box2">
+                <p id="char">Calculator</p>
+            </div>
+            <form id="sums" class="sums" onsubmit="calculateSum(); return false">
+                <div class="Ints">
+                    <input type="number" name="num1" id="num1" placeholder="Enter First Number">
+                    <select name="Operator" id="Operator">
+                        <option value="+">Addition (+) </option>
+                        <option value="-">Subtraction (-) </option>
+                        <option value="*">Multiplication (*) </option>
+                        <option value="/">Division (/) </option>
+                        <option value="%">Modulus (%) </option>
+                        <option value="^">Power (^) </option>
+                        <option value="rt">Root (sqrt) </option>
+                    </select>
+                    <input type="number" name="num2" id="num2" placeholder="Enter Second Number">
+                </div>
+                
+                <button type="submit" id="sub"> submit </button>
+
+                <div class="box2"><span id="result"></span></div>
+            </form>
+            
+        </div>
+    </div>
+
+    <script>
+
+        const calculateSum = () => {
+
+            const a = document.getElementById('num1').value;
+            const b = document.getElementById('num2').value;
+            
+            const index = document.getElementById('Operator');
+            const op = Operator.options[index.selectedIndex].value;
+
+            var res;
+            var key=op;
+
+            switch (key) {
+                case '+':
+                   res=parseInt(a)+parseInt(b);
+                   document.getElementById('result').innerHTML = `(${a}) ${op} (${b}) = ${res}`; 
+                    break;
+
+                    case '-':
+                   res=a-b;
+                   document.getElementById('result').innerHTML = `${a} ${op} ${b} = ${res}`; 
+                    break;
+
+                    case '*':
+                   res=a*b;
+                   document.getElementById('result').innerHTML = `${a} ${op} ${b} = ${res}`; 
+                    break;
+
+                    case '/':
+                   res=a/b;
+                   document.getElementById('result').innerHTML = `${a} ${op} ${b} = ${res}`; 
+                    break;
+                    
+                    case '%':
+                   res=a%b;
+                   document.getElementById('result').innerHTML = `${a} ${op} ${b} = ${res}`; 
+                    break;
+
+                    case '^':
+                   res=Math.pow(a,b);
+                   document.getElementById('result').innerHTML = `${a} ${op} ${b} = ${res}`; 
+                    break;
+
+                default:
+                   res=Math.pow(a,1/b);
+                   document.getElementById('result').innerHTML = `${a} ${op} ${b} = ${res}`; 
+                    break;
+            }
+        }
+
+    </script>
+
+</body>
+</html>
